@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.controllers.GameHubController"
+            styleClass="root" prefWidth="900" prefHeight="650">
+    
+    <!-- Top - Header and Stats -->
+    <top>
+        <VBox spacing="15" styleClass="panel">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Label text="⛺ Adventurer's Camp ⛺" styleClass="header"/>
+            
+            <!-- Player Stats -->
+            <HBox spacing="30" alignment="CENTER_LEFT">
+                <Label fx:id="playerNameLabel" text="Hero" styleClass="player-name"/>
+                <Label fx:id="levelLabel" text="Level: 1" styleClass="level-label"/>
+                <Label fx:id="floorsLabel" text="Floors Cleared: 0" styleClass="stat-value"/>
+                <Label fx:id="goldLabel" text="💰 Gold: 50" styleClass="gold-label"/>
+            </HBox>
+            
+            <!-- HP Bar -->
+            <VBox spacing="5">
+                <Label text="Health:" styleClass="stat-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ProgressBar fx:id="hpBar" prefWidth="300" prefHeight="25" 
+                                styleClass="health-bar" progress="1.0"/>
+                    <Label fx:id="hpLabel" text="100/100" styleClass="stat-value"/>
+                </HBox>
+            </VBox>
+            
+            <!-- XP Bar -->
+            <VBox spacing="5">
+                <Label text="Experience:" styleClass="stat-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ProgressBar fx:id="xpBar" prefWidth="300" prefHeight="20" progress="0.0"/>
+                    <Label fx:id="xpLabel" text="0/100" styleClass="stat-label"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </top>
+    
+    <!-- Center - Action Buttons -->
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
+            
+            <Label text="What would you like to do?" styleClass="section-title"/>
+            
+            <GridPane hgap="20" vgap="20" alignment="CENTER">
+                <!-- Row 1 -->
+                <Button fx:id="exploreButton" text="🗡️ Explore Dungeon" onAction="#handleExplore"
+                        styleClass="primary-button" prefWidth="250" prefHeight="60"
+                        GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Button fx:id="statusButton" text="📊 Character Status" onAction="#handleStatus"
+                        styleClass="button" prefWidth="250" prefHeight="60"
+                        GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <!-- Row 2 -->
+                <Button fx:id="inventoryButton" text="🎒 Inventory &amp; Equipment" onAction="#handleInventory"
+                        styleClass="button" prefWidth="250" prefHeight="60"
+                        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Button fx:id="shopButton" text="🏪 Shop" onAction="#handleShop"
+                        styleClass="button" prefWidth="250" prefHeight="60"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <!-- Row 3 -->
+                <Button fx:id="restButton" text="💤 Rest" onAction="#handleRest"
+                        styleClass="success-button" prefWidth="250" prefHeight="60"
+                        GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Button fx:id="quitButton" text="🚪 Quit Game" onAction="#handleQuit"
+                        styleClass="danger-button" prefWidth="250" prefHeight="60"
+                        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+        </VBox>
+    </center>
+</BorderPane>

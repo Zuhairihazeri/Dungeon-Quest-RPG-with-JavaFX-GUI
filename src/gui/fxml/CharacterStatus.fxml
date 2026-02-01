@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.controllers.CharacterStatusController"
+            styleClass="root" prefWidth="900" prefHeight="650">
+    
+    <top>
+        <Label text="📊 CHARACTER STATUS 📊" styleClass="header" alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20"/>
+            </padding>
+        </Label>
+    </top>
+    
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="30" right="50" bottom="30" left="50"/>
+            </padding>
+            
+            <!-- Stats Panel -->
+            <VBox spacing="15" styleClass="panel" prefWidth="700">
+                <Label fx:id="nameLabel" text="Hero" styleClass="player-name" 
+                       style="-fx-font-size: 28px;"/>
+                
+                <Separator/>
+                
+                <GridPane hgap="30" vgap="15">
+                    <!-- Column 1 -->
+                    <Label text="Level:" styleClass="stat-label" 
+                           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="levelValue" text="1" styleClass="stat-value"
+                           style="-fx-font-size: 18px;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    
+                    <Label text="Max HP:" styleClass="stat-label"
+                           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="maxHpValue" text="100" styleClass="stat-value"
+                           style="-fx-font-size: 18px;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    
+                    <Label text="Current HP:" styleClass="stat-label"
+                           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="currentHpValue" text="100" styleClass="stat-value"
+                           style="-fx-font-size: 18px;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    
+                    <!-- Column 2 -->
+                    <Label text="Base Attack:" styleClass="stat-label"
+                           GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <Label fx:id="baseAtkValue" text="10" styleClass="stat-value"
+                           style="-fx-font-size: 18px;"
+                           GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                    
+                    <Label text="Total Attack:" styleClass="stat-label"
+                           GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <Label fx:id="totalAtkValue" text="15" styleClass="stat-value"
+                           style="-fx-font-size: 18px; -fx-text-fill: #44ff44;"
+                           GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                    
+                    <Label text="Base Defense:" styleClass="stat-label"
+                           GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Label fx:id="baseDefValue" text="5" styleClass="stat-value"
+                           style="-fx-font-size: 18px;"
+                           GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                    
+                    <Label text="Total Defense:" styleClass="stat-label"
+                           GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                    <Label fx:id="totalDefValue" text="10" styleClass="stat-value"
+                           style="-fx-font-size: 18px; -fx-text-fill: #44ff44;"
+                           GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                </GridPane>
+                
+                <Separator/>
+                
+                <!-- Experience -->
+                <VBox spacing="8">
+                    <Label text="Experience Progress:" styleClass="section-title"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <ProgressBar fx:id="xpBar" prefWidth="500" prefHeight="25" progress="0.0"/>
+                        <Label fx:id="xpLabel" text="0 / 100" styleClass="stat-value"/>
+                    </HBox>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Gold -->
+                <HBox spacing="10">
+                    <Label text="Gold:" styleClass="stat-label" style="-fx-font-size: 18px;"/>
+                    <Label fx:id="goldValue" text="50" styleClass="gold-label" 
+                           style="-fx-font-size: 22px;"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Equipment Panel -->
+            <VBox spacing="15" styleClass="panel" prefWidth="700">
+                <Label text="⚔️ EQUIPPED ITEMS ⚔️" styleClass="section-title"/>
+                
+                <HBox spacing="30" alignment="CENTER">
+                    <!-- Weapon Slot -->
+                    <VBox spacing="10" alignment="CENTER" styleClass="equipment-slot">
+                        <Label text="🗡️ Weapon" styleClass="stat-label"/>
+                        <Label fx:id="weaponLabel" text="None" styleClass="stat-value"
+                               wrapText="true" prefWidth="150" alignment="CENTER"/>
+                    </VBox>
+                    
+                    <!-- Armor Slot -->
+                    <VBox spacing="10" alignment="CENTER" styleClass="equipment-slot">
+                        <Label text="🛡️ Armor" styleClass="stat-label"/>
+                        <Label fx:id="armorLabel" text="None" styleClass="stat-value"
+                               wrapText="true" prefWidth="150" alignment="CENTER"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="30"/>
+            </padding>
+            <Button text="← Back to Camp" onAction="#handleBack" 
+                    styleClass="button" prefWidth="200" prefHeight="40"/>
+        </HBox>
+    </bottom>
+</BorderPane>

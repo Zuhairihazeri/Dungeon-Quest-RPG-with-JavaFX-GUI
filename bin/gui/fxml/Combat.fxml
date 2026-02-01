@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.controllers.CombatController"
+            styleClass="root" prefWidth="900" prefHeight="650">
+    
+    <top>
+        <Label text="⚔️ COMBAT ⚔️" styleClass="header" alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20"/>
+            </padding>
+        </Label>
+    </top>
+    
+    <center>
+        <VBox spacing="20" alignment="CENTER">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- Player Panel -->
+            <HBox styleClass="stats-panel" spacing="15" alignment="CENTER_LEFT" prefWidth="800">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+                
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label fx:id="playerNameLabel" text="Hero (Lv. 1)" styleClass="player-name"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="HP:" styleClass="stat-label"/>
+                        <ProgressBar fx:id="playerHpBar" prefWidth="300" prefHeight="25" 
+                                    progress="1.0" styleClass="health-bar"/>
+                        <Label fx:id="playerHpLabel" text="100/100" styleClass="stat-value"/>
+                    </HBox>
+                    <HBox spacing="15">
+                        <Label fx:id="playerAtk" text="ATK: 15" styleClass="stat-value"/>
+                        <Label fx:id="playerDef" text="DEF: 10" styleClass="stat-value"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+            
+            <!-- VS Label -->
+            <Label text="⚔️ VS ⚔️" styleClass="header" style="-fx-font-size: 32px;"/>
+            
+            <!-- Enemy Panel -->
+            <HBox styleClass="combat-panel" spacing="15" alignment="CENTER_LEFT" prefWidth="800">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+                
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label fx:id="enemyNameLabel" text="Goblin (Lv. 1)" styleClass="enemy-name"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="HP:" styleClass="stat-label"/>
+                        <ProgressBar fx:id="enemyHpBar" prefWidth="300" prefHeight="25" 
+                                    progress="1.0" styleClass="health-bar"/>
+                        <Label fx:id="enemyHpLabel" text="30/30" styleClass="stat-value"/>
+                    </HBox>
+                    <HBox spacing="15">
+                        <Label fx:id="enemyAtk" text="ATK: 8" styleClass="stat-value"/>
+                        <Label fx:id="enemyDef" text="DEF: 2" styleClass="stat-value"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+            
+            <!-- Combat Log -->
+            <VBox spacing="5" prefWidth="800">
+                <Label text="Combat Log:" styleClass="section-title"/>
+                <TextArea fx:id="combatLog" editable="false" prefHeight="120" 
+                         wrapText="true" styleClass="text-area"/>
+            </VBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <VBox spacing="15" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="30" bottom="30" left="30"/>
+            </padding>
+            
+            <Label text="Your Turn - Choose an Action:" styleClass="section-title"/>
+            
+            <HBox spacing="20" alignment="CENTER">
+                <Button fx:id="attackButton" text="⚔️ Attack" onAction="#handleAttack"
+                        styleClass="primary-button" prefWidth="150" prefHeight="50"/>
+                <Button fx:id="defendButton" text="🛡️ Defend" onAction="#handleDefend"
+                        styleClass="button" prefWidth="150" prefHeight="50"/>
+                <Button fx:id="useItemButton" text="🧪 Use Item" onAction="#handleUseItem"
+                        styleClass="success-button" prefWidth="150" prefHeight="50"/>
+                <Button fx:id="fleeButton" text="🏃 Flee" onAction="#handleFlee"
+                        styleClass="danger-button" prefWidth="150" prefHeight="50"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

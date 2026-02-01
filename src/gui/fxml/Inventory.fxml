@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.controllers.InventoryController"
+            styleClass="root" prefWidth="900" prefHeight="650">
+    
+    <top>
+        <Label text="🎒 INVENTORY &amp; EQUIPMENT 🎒" styleClass="header" alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="20"/>
+            </padding>
+        </Label>
+    </top>
+    
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- Inventory List -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Inventory Items:" styleClass="section-title"/>
+                <ListView fx:id="inventoryList" prefHeight="400" styleClass="list-view"/>
+                
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="useEquipButton" text="Use / Equip" onAction="#handleUseEquip"
+                            styleClass="primary-button" prefWidth="150"/>
+                    <Button text="Drop Item" onAction="#handleDrop"
+                            styleClass="danger-button" prefWidth="150"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Equipment Display -->
+            <VBox spacing="15" styleClass="panel" prefWidth="350">
+                <Label text="Current Equipment" styleClass="section-title"
+                       alignment="CENTER"/>
+                
+                <!-- Weapon Slot -->
+                <VBox spacing="10" styleClass="equipment-slot">
+                    <Label text="🗡️ WEAPON" styleClass="stat-label" alignment="CENTER"/>
+                    <Label fx:id="weaponLabel" text="None" styleClass="stat-value"
+                           wrapText="true" alignment="CENTER"/>
+                    <Label fx:id="weaponBonusLabel" text="" styleClass="stat-label"
+                           alignment="CENTER" style="-fx-text-fill: #44ff44;"/>
+                    <Button text="Unequip" onAction="#handleUnequipWeapon"
+                            styleClass="button" prefWidth="120"/>
+                </VBox>
+                
+                <!-- Armor Slot -->
+                <VBox spacing="10" styleClass="equipment-slot">
+                    <Label text="🛡️ ARMOR" styleClass="stat-label" alignment="CENTER"/>
+                    <Label fx:id="armorLabel" text="None" styleClass="stat-value"
+                           wrapText="true" alignment="CENTER"/>
+                    <Label fx:id="armorBonusLabel" text="" styleClass="stat-label"
+                           alignment="CENTER" style="-fx-text-fill: #44ff44;"/>
+                    <Button text="Unequip" onAction="#handleUnequipArmor"
+                            styleClass="button" prefWidth="120"/>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Total Stats -->
+                <VBox spacing="8">
+                    <Label text="Total Stats:" styleClass="section-title"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="ATK:" styleClass="stat-label"/>
+                        <Label fx:id="totalAtkLabel" text="15" styleClass="stat-value"
+                               style="-fx-font-size: 16px;"/>
+                    </HBox>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="DEF:" styleClass="stat-label"/>
+                        <Label fx:id="totalDefLabel" text="10" styleClass="stat-value"
+                               style="-fx-font-size: 16px;"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="30"/>
+            </padding>
+            <Button text="← Back to Camp" onAction="#handleBack"
+                    styleClass="button" prefWidth="200" prefHeight="40"/>
+        </HBox>
+    </bottom>
+</BorderPane>
