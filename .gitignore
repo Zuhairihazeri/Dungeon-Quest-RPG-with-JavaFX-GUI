@@ -1,0 +1,24 @@
+# Compiled class files
+*.class
+bin/
+
+# JavaFX SDK
+javafx-sdk/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
